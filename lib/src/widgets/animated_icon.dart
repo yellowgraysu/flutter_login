@@ -21,7 +21,7 @@ class AnimatedIconButton extends StatefulWidget {
   final Color? loadingColor;
   final Function onPressed;
   final AnimationController controller;
-  final IconData icon;
+  final Widget icon;
 
   @override
   State<AnimatedIconButton> createState() => _AnimatedIconButtonState();
@@ -195,7 +195,7 @@ class _AnimatedIconButtonState extends State<AnimatedIconButton>
                 width: _height,
                 height: _height,
                 alignment: Alignment.center,
-                child: Icon(widget.icon, color: Colors.white),
+                child: widget.icon,
               ),
             ),
           ),

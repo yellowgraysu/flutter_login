@@ -874,7 +874,7 @@ void main() {
           passwordValidator: (value) => value!.length == 5 ? null : 'Invalid!',
           loginProviders: [
             LoginProvider(
-                icon: Icons.ac_unit,
+                icon: const Icon(Icons.ac_unit),
                 callback: () {
                   return null;
                 })
@@ -915,7 +915,7 @@ void main() {
           hideProvidersTitle: true,
           loginProviders: [
             LoginProvider(
-                icon: Icons.ac_unit,
+                icon: const Icon(Icons.ac_unit),
                 callback: () {
                   return null;
                 })

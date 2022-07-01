@@ -47,7 +47,7 @@ class LoginProvider {
   ///
   /// NOTE: Both [button] and [icon] can be added to [LoginProvider],
   /// but [button] will take preference over [icon]
-  final IconData? icon;
+  final Widget? icon;
 
   /// The label shown under the provider
   final String label;
