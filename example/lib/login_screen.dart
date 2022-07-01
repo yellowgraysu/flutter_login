@@ -72,14 +72,14 @@ class LoginScreen extends StatelessWidget {
           },
         ),
         LoginProvider(
-          icon: FontAwesomeIcons.google,
+          icon: const Icon(FontAwesomeIcons.google),
           label: 'Google',
           callback: () async {
             return null;
           },
         ),
         LoginProvider(
-          icon: FontAwesomeIcons.githubAlt,
+          icon: const Icon(FontAwesomeIcons.githubAlt),
           callback: () async {
             debugPrint('start github sign in');
             await Future.delayed(loginTime);
