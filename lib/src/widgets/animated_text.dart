@@ -96,7 +96,7 @@ class _AnimatedTextState extends State<AnimatedText>
       ..translate(
         0.0,
         -radius * sin(_animation.value),
-        -radius * cos(_animation.value),
+        0.0,
       )
       ..rotateX(-_animation.value); // 0 -> -pi/2
   }
@@ -106,7 +106,7 @@ class _AnimatedTextState extends State<AnimatedText>
       ..translate(
         0.0,
         radius * cos(_animation.value),
-        -radius * sin(_animation.value),
+        0.0,
       )
       ..rotateX((pi / 2) - _animation.value); // pi/2 -> 0
   }
@@ -116,7 +116,7 @@ class _AnimatedTextState extends State<AnimatedText>
       ..translate(
         0.0,
         radius * sin(_animation.value),
-        -radius * cos(_animation.value),
+        0.0,
       )
       ..rotateX(_animation.value); // 0 -> pi/2
   }
@@ -126,7 +126,7 @@ class _AnimatedTextState extends State<AnimatedText>
       ..translate(
         0.0,
         -radius * cos(_animation.value),
-        -radius * sin(_animation.value),
+        0.0,
       )
       ..rotateX(_animation.value - pi / 2); // -pi/2 -> 0
   }
