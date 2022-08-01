@@ -134,7 +134,7 @@ class _Header extends StatefulWidget {
     required this.loginTheme,
   });
 
-  final ImageProvider? logo;
+  final Widget? logo;
   final String? logoTag;
   final double logoWidth;
   final String? title;
@@ -203,12 +203,11 @@ class __HeaderState extends State<_Header> {
     final displayLogo = widget.logo != null && logoHeight >= kMinLogoHeight;
     final cardWidth = min(MediaQuery.of(context).size.width * 0.75, 360.0);
 
-    var logo = displayLogo
-        ? Image(
-            image: widget.logo!,
-            filterQuality: FilterQuality.high,
+    Widget logo = displayLogo
+        ? SizedBox(
             height: logoHeight,
             width: widget.logoWidth * cardWidth,
+            child: widget.logo!,
           )
         : const SizedBox.shrink();
 
@@ -268,15 +267,13 @@ class __HeaderState extends State<_Header> {
 }
 
 class FlutterLogin extends StatefulWidget {
-  FlutterLogin(
+  const FlutterLogin(
       {Key? key,
       this.onSignup,
       required this.onLogin,
       required this.onRecoverPassword,
       this.title,
-
-      /// The [ImageProvider] or asset path [String] for the logo image to be displayed
-      dynamic logo,
+      this.logo,
       this.messages,
       this.theme,
       this.userValidator,
@@ -303,9 +300,7 @@ class FlutterLogin extends StatefulWidget {
       this.initialAuthMode = AuthMode.login,
       this.children,
       this.scrollable = false})
-      : assert((logo is String?) || (logo is ImageProvider?)),
-        logo = logo is String ? AssetImage(logo) : logo,
-        super(key: key);
+      : super(key: key);
 
   /// Called when the user hit the submit button when in sign up mode
   ///
@@ -331,7 +326,7 @@ class FlutterLogin extends StatefulWidget {
   final String? title;
 
   /// The image provider for the logo image to be displayed
-  final ImageProvider? logo;
+  final Widget? logo;
 
   /// Describes all of the labels, text hints, button texts and other auth
   /// descriptions
