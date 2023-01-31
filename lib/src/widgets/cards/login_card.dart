@@ -595,6 +595,15 @@ class _LoginCardState extends State<_LoginCard> with TickerProviderStateMixin {
       key: _formKey,
       child: Column(
         children: [
+          Text(
+            isLogin ? messages.signInIntro : messages.signUpIntro, //TODO
+            textAlign: TextAlign.center,
+            style: const TextStyle(
+              fontSize: 20,
+              color: Color(0xFF292A85),
+            ),
+          ),
+          const SizedBox(height: 20),
           Container(
             padding: const EdgeInsets.only(
               left: cardPadding,
