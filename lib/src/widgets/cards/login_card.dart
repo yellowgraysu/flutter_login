@@ -596,7 +596,7 @@ class _LoginCardState extends State<_LoginCard> with TickerProviderStateMixin {
       child: Column(
         children: [
           Text(
-            isLogin ? messages.signInIntro : messages.signUpIntro, //TODO
+            isLogin ? messages.signInIntro : messages.signUpIntro,
             textAlign: TextAlign.center,
             style: const TextStyle(
               fontSize: 20,

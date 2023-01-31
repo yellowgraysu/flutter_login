@@ -146,7 +146,7 @@ class _RecoverCardState extends State<_RecoverCard>
         child: Container(
           padding: const EdgeInsets.only(
             left: cardPadding,
-            top: cardPadding + 10.0,
+            //top: cardPadding + 10.0,
             right: cardPadding,
             bottom: cardPadding,
           ),
