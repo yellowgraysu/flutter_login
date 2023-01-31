@@ -208,6 +208,7 @@ class _AnimatedTextFormFieldState extends State<AnimatedTextFormField> {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     Widget textField = TextFormField(
+      style: const TextStyle(color: Color(0xFF9E9E9E)),
       cursorColor: theme.primaryColor,
       controller: widget.controller,
       focusNode: widget.focusNode,
@@ -270,6 +271,7 @@ class AnimatedPasswordTextFormField extends StatefulWidget {
     this.onFieldSubmitted,
     this.onSaved,
     this.autofillHints,
+    this.iconColor,
   })  : assert((inertiaController == null && inertiaDirection == null) ||
             (inertiaController != null && inertiaDirection != null)),
         super(key: key);
@@ -289,6 +291,7 @@ class AnimatedPasswordTextFormField extends StatefulWidget {
   final FormFieldSetter<String>? onSaved;
   final TextFieldInertiaDirection? inertiaDirection;
   final Iterable<String>? autofillHints;
+  final Color? iconColor;
 
   @override
   State<AnimatedPasswordTextFormField> createState() =>
@@ -309,7 +312,11 @@ class _AnimatedPasswordTextFormFieldState
       enabled: widget.enabled,
       autofillHints: widget.autofillHints,
       labelText: widget.labelText,
-      prefixIcon: const Icon(FontAwesomeIcons.lock, size: 20),
+      prefixIcon: Icon(
+        FontAwesomeIcons.lock,
+        size: 20,
+        color: widget.iconColor,
+      ),
       suffixIcon: GestureDetector(
         onTap: () => setState(() => _obscureText = !_obscureText),
         dragStartBehavior: DragStartBehavior.down,
@@ -324,15 +331,23 @@ class _AnimatedPasswordTextFormFieldState
               children: <Widget>[bottomChild, topChild],
             );
           },
-          firstChild: const Icon(
-            Icons.visibility,
-            size: 25.0,
-            semanticLabel: 'show password',
+          firstChild: Padding(
+            padding: const EdgeInsets.only(right: 8),
+            child: Icon(
+              FontAwesomeIcons.solidEyeSlash,
+              size: 20.0,
+              color: widget.iconColor,
+              semanticLabel: 'show password',
+            ),
           ),
-          secondChild: const Icon(
-            Icons.visibility_off,
-            size: 25.0,
-            semanticLabel: 'hide password',
+          secondChild: Padding(
+            padding: const EdgeInsets.only(right: 8),
+            child: Icon(
+              FontAwesomeIcons.solidEye,
+              size: 20.0,
+              color: widget.iconColor,
+              semanticLabel: 'hide password',
+            ),
           ),
           crossFadeState: _obscureText
               ? CrossFadeState.showFirst

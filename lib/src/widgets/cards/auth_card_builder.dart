@@ -17,7 +17,6 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:provider/provider.dart';
 import 'package:sign_in_button/sign_in_button.dart';
 
-import '../../../flutter_login.dart';
 import '../animated_button.dart';
 import '../animated_icon.dart';
 import '../animated_text.dart';
@@ -341,6 +340,7 @@ class AuthCardState extends State<AuthCard> with TickerProviderStateMixin {
             hideForgotPasswordButton: widget.hideForgotPasswordButton,
             loginAfterSignUp: widget.loginAfterSignUp,
             hideProvidersTitle: widget.hideProvidersTitle,
+            iconColor: widget.loginTheme?.iconColor,
           ),
         );
       case _recoveryIndex:
@@ -393,6 +393,7 @@ class AuthCardState extends State<AuthCard> with TickerProviderStateMixin {
           passwordValidator: widget.passwordValidator!,
           onBack: () => _changeCard(_loginPageIndex),
           onSubmitCompleted: () => _changeCard(_loginPageIndex),
+          iconColor: widget.loginTheme?.iconColor,
         );
 
       case _confirmSignup:

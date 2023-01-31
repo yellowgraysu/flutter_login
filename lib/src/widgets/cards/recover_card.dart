@@ -87,7 +87,10 @@ class _RecoverCardState extends State<_RecoverCard>
       loadingController: widget.loadingController,
       width: width,
       labelText: messages.userHint,
-      prefixIcon: const Icon(FontAwesomeIcons.solidCircleUser),
+      prefixIcon: Icon(
+        FontAwesomeIcons.solidCircleUser,
+        color: widget.loginTheme?.iconColor,
+      ),
       keyboardType: TextFieldUtils.getKeyboardType(widget.userType),
       autofillHints: [TextFieldUtils.getAutofillHints(widget.userType)],
       textInputAction: TextInputAction.done,
@@ -121,7 +124,10 @@ class _RecoverCardState extends State<_RecoverCard>
       padding: const EdgeInsets.symmetric(horizontal: 30.0, vertical: 4),
       materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
       textColor: loginTheme?.switchAuthTextColor ?? calculatedTextColor,
-      child: Text(messages.goBackButton),
+      child: Text(
+        messages.goBackButton,
+        style: const TextStyle(color: Color(0xFF8485FF)),
+      ),
     );
   }
 
@@ -154,7 +160,8 @@ class _RecoverCardState extends State<_RecoverCard>
                   messages.recoverPasswordIntro,
                   key: kRecoverPasswordIntroKey,
                   textAlign: TextAlign.center,
-                  style: theme.textTheme.bodyText2,
+                  style: theme.textTheme.bodyText2
+                      ?.copyWith(color: const Color(0xFF292A85)),
                 ),
                 const SizedBox(height: 20),
                 _buildRecoverNameField(textFieldWidth, messages, auth),
@@ -165,7 +172,8 @@ class _RecoverCardState extends State<_RecoverCard>
                       : messages.recoverPasswordDescription,
                   key: kRecoverPasswordDescriptionKey,
                   textAlign: TextAlign.center,
-                  style: theme.textTheme.bodyText2,
+                  style: theme.textTheme.bodyText2
+                      ?.copyWith(color: const Color(0xFF919BC5)),
                 ),
                 const SizedBox(height: 26),
                 _buildRecoverButton(theme, messages),

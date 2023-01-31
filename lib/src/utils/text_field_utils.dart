@@ -27,15 +27,19 @@ class TextFieldUtils {
     }
   }
 
-  static Icon getPrefixIcon(LoginUserType userType) {
+  static Icon getPrefixIcon(LoginUserType userType, Color? iconColor) {
     switch (userType) {
       case LoginUserType.name:
-        return const Icon(FontAwesomeIcons.circleUser);
+        return Icon(FontAwesomeIcons.circleUser, color: iconColor);
       case LoginUserType.phone:
-        return const Icon(FontAwesomeIcons.squarePhoneFlip);
+        return Icon(FontAwesomeIcons.squarePhoneFlip, color: iconColor);
       case LoginUserType.email:
       default:
-        return const Icon(FontAwesomeIcons.squareEnvelope);
+        return Icon(
+          FontAwesomeIcons.solidEnvelope,
+          color: iconColor,
+          size: 20,
+        );
     }
   }
 

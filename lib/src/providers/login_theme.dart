@@ -63,6 +63,7 @@ class LoginTheme with ChangeNotifier {
     this.headerMargin,
     this.cardInitialHeight,
     this.cardTopPosition,
+    this.iconColor,
   });
 
   /// The background color of the login page for light gradient; if provided,
@@ -154,4 +155,7 @@ class LoginTheme with ChangeNotifier {
   ///
   /// Default: deviceSize.height / 2 - cardInitialHeight / 2
   final double? cardTopPosition;
+
+  /// the icon color
+  final Color? iconColor;
 }

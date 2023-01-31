@@ -12,6 +12,7 @@ class _LoginCard extends StatefulWidget {
     required this.requireAdditionalSignUpFields,
     required this.onSwitchConfirmSignup,
     required this.requireSignUpConfirmation,
+    required this.iconColor,
     this.onSubmitCompleted,
     this.hideForgotPasswordButton = false,
     this.hideSignUpButton = false,
@@ -33,6 +34,7 @@ class _LoginCard extends StatefulWidget {
   final LoginUserType userType;
   final bool requireAdditionalSignUpFields;
   final bool requireSignUpConfirmation;
+  final Color? iconColor;
 
   @override
   _LoginCardState createState() => _LoginCardState();
@@ -300,7 +302,8 @@ class _LoginCardState extends State<_LoginCard> with TickerProviderStateMixin {
       autofillHints: _isSubmitting
           ? null
           : [TextFieldUtils.getAutofillHints(widget.userType)],
-      prefixIcon: TextFieldUtils.getPrefixIcon(widget.userType),
+      prefixIcon:
+          TextFieldUtils.getPrefixIcon(widget.userType, widget.iconColor),
       keyboardType: TextFieldUtils.getKeyboardType(widget.userType),
       textInputAction: TextInputAction.next,
       onFieldSubmitted: (value) {
@@ -338,6 +341,7 @@ class _LoginCardState extends State<_LoginCard> with TickerProviderStateMixin {
       validator: widget.passwordValidator,
       onSaved: (value) => auth.password = value!,
       enabled: !_isSubmitting,
+      iconColor: widget.iconColor,
     );
   }
 
@@ -363,6 +367,7 @@ class _LoginCardState extends State<_LoginCard> with TickerProviderStateMixin {
             }
           : (value) => null,
       onSaved: (value) => auth.confirmPassword = value!,
+      iconColor: widget.iconColor,
     );
   }
 
@@ -382,7 +387,8 @@ class _LoginCardState extends State<_LoginCard> with TickerProviderStateMixin {
             : null,
         child: Text(
           messages.forgotPasswordButton,
-          style: theme.textTheme.bodyText2,
+          style: theme.textTheme.bodyText2
+              ?.copyWith(color: const Color(0xFF9E9BC5)),
           textAlign: TextAlign.left,
         ),
       ),
@@ -421,6 +427,7 @@ class _LoginCardState extends State<_LoginCard> with TickerProviderStateMixin {
         textColor: loginTheme.switchAuthTextColor ?? calculatedTextColor,
         child: AnimatedText(
           text: auth.isSignup ? messages.loginButton : messages.signupButton,
+          style: const TextStyle(color: Color(0xFF8485FF)),
           textRotation: AnimatedTextRotation.down,
         ),
       ),
@@ -606,9 +613,8 @@ class _LoginCardState extends State<_LoginCard> with TickerProviderStateMixin {
             ),
           ),
           ExpandableContainer(
-            backgroundColor: _switchAuthController.isCompleted
-                ? null
-                : theme.colorScheme.secondary,
+            backgroundColor:
+                _switchAuthController.isCompleted ? null : Colors.white,
             controller: _switchAuthController,
             initialState: isLogin
                 ? ExpandableContainerState.shrunk
