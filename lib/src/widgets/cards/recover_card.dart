@@ -160,8 +160,10 @@ class _RecoverCardState extends State<_RecoverCard>
                   messages.recoverPasswordIntro,
                   key: kRecoverPasswordIntroKey,
                   textAlign: TextAlign.center,
-                  style: theme.textTheme.bodyText2
-                      ?.copyWith(color: const Color(0xFF292A85)),
+                  style: const TextStyle(
+                    fontSize: 20,
+                    color: Color(0xFF292A85),
+                  ),
                 ),
                 const SizedBox(height: 20),
                 _buildRecoverNameField(textFieldWidth, messages, auth),

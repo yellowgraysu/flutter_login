@@ -10,6 +10,8 @@ class LoginMessages with ChangeNotifier {
     this.signupButton = defaultSignupButton,
     this.recoverPasswordButton = defaultRecoverPasswordButton,
     this.recoverPasswordIntro = defaultRecoverPasswordIntro,
+    this.signInIntro = defaultSignInIntro,
+    this.signUpIntro = defaultSignUpIntro,
     this.recoverPasswordDescription = defaultRecoverPasswordDescription,
     this.goBackButton = defaultGoBackButton,
     this.confirmPasswordError = defaultConfirmPasswordError,
@@ -49,6 +51,8 @@ class LoginMessages with ChangeNotifier {
       'We will send your plain-text password to this email account.';
   static const defaultRecoverCodePasswordDescription =
       'We will send a password recovery code to your email.';
+  static const defaultSignInIntro = 'Sign in to your account';
+  static const defaultSignUpIntro = 'Create a new Account';
   static const defaultGoBackButton = 'BACK';
   static const defaultConfirmPasswordError = 'Password do not match!';
   static const defaultRecoverPasswordSuccess = 'An email has been sent';
@@ -108,6 +112,12 @@ class LoginMessages with ChangeNotifier {
 
   /// Intro in password recovery form
   final String recoverPasswordIntro;
+
+  /// Intro in sign in form
+  final String signInIntro;
+
+  /// Intro in sign up form
+  final String signUpIntro;
 
   /// Description in password recovery form, shown when the onConfirmRecover
   /// callback is not provided
