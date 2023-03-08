@@ -82,6 +82,9 @@ class _AnimatedTextFormFieldState extends State<AnimatedTextFormField> {
   late Animation<double> iconRotationAnimation;
   late Animation<double> iconTranslateAnimation;
 
+  bool focus = false;
+  bool error = false;
+
   @override
   void initState() {
     super.initState();
@@ -207,21 +210,44 @@ class _AnimatedTextFormFieldState extends State<AnimatedTextFormField> {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    Widget textField = TextFormField(
-      style: const TextStyle(color: Color(0xFF9E9E9E)),
-      cursorColor: theme.primaryColor,
-      controller: widget.controller,
-      focusNode: widget.focusNode,
-      decoration: _getInputDecoration(theme),
-      keyboardType: widget.keyboardType,
-      textInputAction: widget.textInputAction,
-      obscureText: widget.obscureText,
-      onFieldSubmitted: widget.onFieldSubmitted,
-      onSaved: widget.onSaved,
-      validator: widget.validator,
-      enabled: widget.enabled,
-      autocorrect: widget.autocorrect,
-      autofillHints: widget.autofillHints,
+    Widget textField = Focus(
+      onFocusChange: (value) => setState(
+        () => focus = value,
+      ),
+      child: Container(
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(40),
+          color: const Color(0xFF8485FF)
+              .withOpacity((focus && !error) ? 0.3 : 0.0),
+        ),
+        child: Container(
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(40),
+            color: const Color(0xFFF5F5F5).withOpacity(error ? 0 : 1),
+          ),
+          margin: const EdgeInsets.all(2.0),
+          child: TextFormField(
+            style: const TextStyle(color: Color(0xFF9E9E9E)),
+            cursorColor: theme.primaryColor,
+            controller: widget.controller,
+            focusNode: widget.focusNode,
+            decoration: _getInputDecoration(theme),
+            keyboardType: widget.keyboardType,
+            textInputAction: widget.textInputAction,
+            obscureText: widget.obscureText,
+            onFieldSubmitted: widget.onFieldSubmitted,
+            onSaved: widget.onSaved,
+            validator: (value) {
+              final result = widget.validator?.call(value);
+              error = result != null;
+              return result;
+            },
+            enabled: widget.enabled,
+            autocorrect: widget.autocorrect,
+            autofillHints: widget.autofillHints,
+          ),
+        ),
+      ),
     );
 
     if (widget.loadingController != null) {

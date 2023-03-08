@@ -668,7 +668,7 @@ class _FlutterLoginState extends State<FlutterLogin>
         focusedBorder: inputTheme.focusedBorder ??
             inputTheme.border ??
             OutlineInputBorder(
-              borderSide: BorderSide(color: primaryColor!, width: 1.5),
+              borderSide: const BorderSide(color: Color(0xFF8485FF)),
               borderRadius: roundBorderRadius,
             ),
         errorBorder: inputTheme.errorBorder ??
