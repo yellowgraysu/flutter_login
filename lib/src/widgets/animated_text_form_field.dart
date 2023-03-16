@@ -211,6 +211,7 @@ class _AnimatedTextFormFieldState extends State<AnimatedTextFormField> {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     Widget textField = Focus(
+      skipTraversal: true,
       onFocusChange: (value) => setState(
         () => focus = value,
       ),
