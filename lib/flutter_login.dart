@@ -776,7 +776,7 @@ class _FlutterLoginState extends State<FlutterLogin>
               begin: Alignment.topLeft,
               end: Alignment.bottomRight,
             ),
-            SingleChildScrollView(
+            Positioned.fill(
               child: Theme(
                 data: theme,
                 child: Stack(
